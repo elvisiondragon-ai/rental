@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,9 +13,20 @@ import { format } from "date-fns";
 import { toast } from "sonner";
 import BottomNav from "@/components/BottomNav";
 import heroJetImage from "@/assets/hero-private-jet.jpg";
+import jetGulfstream from "@/assets/jet-gulfstream-g650.jpg";
+import jetBombardier from "@/assets/jet-bombardier-7500.jpg";
+import jetFalcon from "@/assets/jet-falcon-8x.jpg";
+import jetCitation from "@/assets/jet-citation-x.jpg";
 
 const PrivateJet = () => {
   const [departureDate, setDepartureDate] = useState<Date>();
+
+  const availableJets = [
+    { name: "Gulfstream G650", image: jetGulfstream, category: "Ultra Long Range" },
+    { name: "Bombardier Global 7500", image: jetBombardier, category: "Ultra Long Range" },
+    { name: "Dassault Falcon 8X", image: jetFalcon, category: "Long Range" },
+    { name: "Cessna Citation X+", image: jetCitation, category: "Super Midsize" },
+  ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,6 +52,30 @@ const PrivateJet = () => {
           </p>
         </div>
       </div>
+
+      {/* Available Jets Gallery */}
+      <section className="py-12 px-4 bg-muted/30">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold mb-2">Our Private Jet Fleet</h2>
+            <p className="text-muted-foreground">Choose from our exclusive collection of luxury aircraft</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {availableJets.map((jet, index) => (
+              <Card key={index} className="overflow-hidden border-accent/20 shadow-card hover:shadow-luxury transition-all duration-300">
+                <div 
+                  className="h-48 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${jet.image})` }}
+                />
+                <CardContent className="p-4">
+                  <Badge variant="secondary" className="mb-2 text-xs">{jet.category}</Badge>
+                  <h3 className="text-lg font-bold">{jet.name}</h3>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* RFQ Form */}
       <section className="py-12 px-4">

@@ -8,7 +8,10 @@ import BottomNav from "@/components/BottomNav";
 import heroCarImage from "@/assets/hero-luxury-car.jpg";
 import fleetBentley from "@/assets/fleet-bentley.jpg";
 import fleetMercedes from "@/assets/fleet-mercedes.jpg";
-import heroJetImage from "@/assets/hero-private-jet.jpg";
+import jetGulfstream from "@/assets/jet-gulfstream-g650.jpg";
+import jetBombardier from "@/assets/jet-bombardier-7500.jpg";
+import jetFalcon from "@/assets/jet-falcon-8x.jpg";
+import jetCitation from "@/assets/jet-citation-x.jpg";
 
 const Fleet = () => {
   const luxuryCars = [
@@ -42,7 +45,7 @@ const Fleet = () => {
     {
       name: "Gulfstream G650",
       category: "Ultra Long Range",
-      image: heroJetImage,
+      image: jetGulfstream,
       specs: { passengers: "18", range: "7,000 nm", speed: "Mach 0.925" },
       features: ["Full Galley", "Bedroom Suite", "Stand-up Cabin", "Ka-band WiFi"],
       price: "Quote on Request"
@@ -50,9 +53,25 @@ const Fleet = () => {
     {
       name: "Bombardier Global 7500",
       category: "Ultra Long Range",
-      image: heroJetImage,
+      image: jetBombardier,
       specs: { passengers: "19", range: "7,700 nm", speed: "Mach 0.925" },
       features: ["Four Living Spaces", "Master Suite", "Full Kitchen", "4K Entertainment"],
+      price: "Quote on Request"
+    },
+    {
+      name: "Dassault Falcon 8X",
+      category: "Long Range",
+      image: jetFalcon,
+      specs: { passengers: "16", range: "6,450 nm", speed: "Mach 0.90" },
+      features: ["Three-Engine Safety", "FalconCabin HD+", "Full Galley", "Dual-Head Shower"],
+      price: "Quote on Request"
+    },
+    {
+      name: "Cessna Citation X+",
+      category: "Super Midsize",
+      image: jetCitation,
+      specs: { passengers: "12", range: "3,460 nm", speed: "Mach 0.935" },
+      features: ["Fastest Civilian Jet", "Premium Leather", "Wireless Cabin Management", "Full Lavatory"],
       price: "Quote on Request"
     },
   ];
@@ -143,7 +162,7 @@ const Fleet = () => {
             </TabsContent>
 
             <TabsContent value="jets">
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
                 {privateJets.map((jet, index) => (
                   <Card key={index} className="overflow-hidden border-accent/20 shadow-card hover:shadow-luxury transition-all duration-300">
                     <div 
